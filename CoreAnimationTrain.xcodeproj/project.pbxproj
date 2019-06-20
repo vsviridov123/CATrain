@@ -12,6 +12,8 @@
 		A3B6C9CD22B78E4800DCF20C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3B6C9CB22B78E4800DCF20C /* Main.storyboard */; };
 		A3B6C9CF22B78E4800DCF20C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3B6C9CE22B78E4800DCF20C /* Assets.xcassets */; };
 		A3B6C9D222B78E4800DCF20C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3B6C9D022B78E4800DCF20C /* LaunchScreen.storyboard */; };
+		A3B6C9DB22B78F6200DCF20C /* PopupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6C9DA22B78F6200DCF20C /* PopupButton.swift */; };
+		A3B6C9DD22BA46A500DCF20C /* PressedEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6C9DC22BA46A500DCF20C /* PressedEffectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		A3B6C9CE22B78E4800DCF20C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3B6C9D122B78E4800DCF20C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A3B6C9D322B78E4800DCF20C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3B6C9DA22B78F6200DCF20C /* PopupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PopupButton.swift; path = ../../../PopupButton.swift; sourceTree = "<group>"; };
+		A3B6C9DC22BA46A500DCF20C /* PressedEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressedEffectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 		A3B6C9C622B78E4800DCF20C /* CoreAnimationTrain */ = {
 			isa = PBXGroup;
 			children = (
+				A3B6C9D922B78E6000DCF20C /* CustomView */,
 				A3B6C9C722B78E4800DCF20C /* AppDelegate.swift */,
 				A3B6C9C922B78E4800DCF20C /* ViewController.swift */,
 				A3B6C9CB22B78E4800DCF20C /* Main.storyboard */,
@@ -62,6 +67,15 @@
 				A3B6C9D322B78E4800DCF20C /* Info.plist */,
 			);
 			path = CoreAnimationTrain;
+			sourceTree = "<group>";
+		};
+		A3B6C9D922B78E6000DCF20C /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				A3B6C9DA22B78F6200DCF20C /* PopupButton.swift */,
+				A3B6C9DC22BA46A500DCF20C /* PressedEffectView.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3B6C9DD22BA46A500DCF20C /* PressedEffectView.swift in Sources */,
 				A3B6C9CA22B78E4800DCF20C /* ViewController.swift in Sources */,
 				A3B6C9C822B78E4800DCF20C /* AppDelegate.swift in Sources */,
+				A3B6C9DB22B78F6200DCF20C /* PopupButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
