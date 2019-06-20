@@ -12,17 +12,18 @@ class PressedEffectView: UIView {
     
     var mainCircle = CALayer()
     private var secondCircle = CALayer()
+    private var content: UIView!
     
-    init(parent: UIView) {
-        super.init(frame: CGRect.zero)
-        self.frame = parent.frame
-        self.frame.size.changeSize(width: 10, height: 10)
-        self.center = parent.center
-        
+    convenience init(center: CGPoint, radius: CGFloat, contentView: UIView) {
+        self.init(frame: CGRect.zero)
+        self.frame.size = CGSize(width: radius * 2 , height: radius * 2)
+        self.center = center
+        self.content = contentView
+
         self.mainCircle.frame = self.bounds
         self.secondCircle.frame = self.bounds
-        self.mainCircle.cornerRadius = self.frame.width / 2
-        self.secondCircle.cornerRadius = self.frame.width / 2
+        self.mainCircle.cornerRadius = radius
+        self.secondCircle.cornerRadius = radius
         self.mainCircle.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
         self.secondCircle.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
         self.mainCircle.backgroundColor = UIColor.clear.cgColor
@@ -31,6 +32,7 @@ class PressedEffectView: UIView {
         self.secondCircle.borderWidth = 1
         self.layer.addSublayer(self.mainCircle)
         self.layer.addSublayer(self.secondCircle)
+
     }
     
     private override init(frame: CGRect) {
