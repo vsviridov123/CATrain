@@ -8,10 +8,23 @@
 
 import UIKit
 
+protocol PressedEffectViewDelegate: class {
+    func animationDidStop()
+}
+
+extension PressedEffectViewDelegate where Self: UIViewSimpleAnimation {
+    func animationDidStop() {
+        //guard let view = self as? UIViewSimpleAnimation else { return }
+        self.startAnimation()
+    }
+}
+
 class PressedEffectView: UIView {
     
     private var mainCircle = CALayer()
     private var secondCircle = CALayer()
+    
+    weak var delegate: PressedEffectViewDelegate?
     
     convenience init(center: CGPoint, radius: CGFloat) {
         self.init(frame: CGRect.zero)
@@ -52,8 +65,18 @@ class PressedEffectView: UIView {
         let borderWidthAnimation = CAKeyframeAnimation(keyPath: #keyPath(CALayer.borderWidth))
         borderWidthAnimation.values = pathArray
         borderWidthAnimation.duration = 0.5
+        borderWidthAnimation.delegate = self
         self.mainCircle.add(borderWidthAnimation, forKey: "borderWidthMaincircle")
+        
     }
     
 }
+
+extension PressedEffectView: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        if flag {
+        }
+    }
+}
+
 
