@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A3328BFD22BCD86E0014A686 /* CircularWavesEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3328BFC22BCD86E0014A686 /* CircularWavesEffectView.swift */; };
+		A3328C0022BCD8EE0014A686 /* CoreGraphicsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3328BFF22BCD8EE0014A686 /* CoreGraphicsExtension.swift */; };
 		A3B6C9C822B78E4800DCF20C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6C9C722B78E4800DCF20C /* AppDelegate.swift */; };
 		A3B6C9CA22B78E4800DCF20C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6C9C922B78E4800DCF20C /* ViewController.swift */; };
 		A3B6C9CD22B78E4800DCF20C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3B6C9CB22B78E4800DCF20C /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A3328BFC22BCD86E0014A686 /* CircularWavesEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularWavesEffectView.swift; sourceTree = "<group>"; };
+		A3328BFF22BCD8EE0014A686 /* CoreGraphicsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreGraphicsExtension.swift; sourceTree = "<group>"; };
 		A3B6C9C422B78E4800DCF20C /* CoreAnimationTrain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreAnimationTrain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B6C9C722B78E4800DCF20C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3B6C9C922B78E4800DCF20C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +43,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A3328BFE22BCD8D20014A686 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A3328BFF22BCD8EE0014A686 /* CoreGraphicsExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A3328C0122C21C300014A686 /* EffectView */ = {
+			isa = PBXGroup;
+			children = (
+				A3B6C9DC22BA46A500DCF20C /* PressedEffectView.swift */,
+				A3328BFC22BCD86E0014A686 /* CircularWavesEffectView.swift */,
+			);
+			path = EffectView;
+			sourceTree = "<group>";
+		};
+		A3328C0222C26B2D0014A686 /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Icon;
+			sourceTree = "<group>";
+		};
 		A3B6C9BB22B78E4800DCF20C = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +86,7 @@
 		A3B6C9C622B78E4800DCF20C /* CoreAnimationTrain */ = {
 			isa = PBXGroup;
 			children = (
+				A3328BFE22BCD8D20014A686 /* Extension */,
 				A3B6C9D922B78E6000DCF20C /* CustomView */,
 				A3B6C9C722B78E4800DCF20C /* AppDelegate.swift */,
 				A3B6C9C922B78E4800DCF20C /* ViewController.swift */,
@@ -72,8 +101,9 @@
 		A3B6C9D922B78E6000DCF20C /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				A3328C0222C26B2D0014A686 /* Icon */,
 				A3B6C9DA22B78F6200DCF20C /* PopupButton.swift */,
-				A3B6C9DC22BA46A500DCF20C /* PressedEffectView.swift */,
+				A3328C0122C21C300014A686 /* EffectView */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -152,7 +182,9 @@
 				A3B6C9DD22BA46A500DCF20C /* PressedEffectView.swift in Sources */,
 				A3B6C9CA22B78E4800DCF20C /* ViewController.swift in Sources */,
 				A3B6C9C822B78E4800DCF20C /* AppDelegate.swift in Sources */,
+				A3328C0022BCD8EE0014A686 /* CoreGraphicsExtension.swift in Sources */,
 				A3B6C9DB22B78F6200DCF20C /* PopupButton.swift in Sources */,
+				A3328BFD22BCD86E0014A686 /* CircularWavesEffectView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

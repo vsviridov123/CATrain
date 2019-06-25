@@ -10,20 +10,20 @@ import UIKit
 
 class PressedEffectView: UIView {
     
-    var mainCircle = CALayer()
+    private var mainCircle = CALayer()
     private var secondCircle = CALayer()
-    private var content: UIView!
     
-    convenience init(center: CGPoint, radius: CGFloat, contentView: UIView) {
+    convenience init(center: CGPoint, radius: CGFloat) {
         self.init(frame: CGRect.zero)
-        self.frame.size = CGSize(width: radius * 2 , height: radius * 2)
+        self.frame.size = CGSize(width: radius + 15 , height: radius + 15)
+        self.mainCircle.frame = self.bounds
+        self.secondCircle.frame = self.bounds
         self.center = center
-        self.content = contentView
 
         self.mainCircle.frame = self.bounds
         self.secondCircle.frame = self.bounds
-        self.mainCircle.cornerRadius = radius
-        self.secondCircle.cornerRadius = radius
+        self.mainCircle.cornerRadius = self.bounds.width / 2
+        self.secondCircle.cornerRadius = self.bounds.width / 2
         self.mainCircle.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
         self.secondCircle.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
         self.mainCircle.backgroundColor = UIColor.clear.cgColor
@@ -32,7 +32,6 @@ class PressedEffectView: UIView {
         self.secondCircle.borderWidth = 1
         self.layer.addSublayer(self.mainCircle)
         self.layer.addSublayer(self.secondCircle)
-
     }
     
     private override init(frame: CGRect) {
@@ -54,7 +53,6 @@ class PressedEffectView: UIView {
         borderWidthAnimation.values = pathArray
         borderWidthAnimation.duration = 0.5
         self.mainCircle.add(borderWidthAnimation, forKey: "borderWidthMaincircle")
-        
     }
     
 }

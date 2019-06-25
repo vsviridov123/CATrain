@@ -8,23 +8,19 @@
 
 import UIKit
 
-public extension CGPoint {
-    func offset(x: CGFloat, y: CGFloat) -> CGPoint {
-        return CGPoint(x: self.x + x, y: self.y + y)
-    }
-}
-
-public extension CGSize {
-    mutating func changeSize(width: CGFloat, height: CGFloat) {
-        self.width = self.width + width
-        self.height = self.height + height
-    }
-}
-
 class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.example()
+    }
+    
+    func example() {
+        let popupButton = PopupButton(frame: CGRect(origin: .zero, size: CGSize(width: 50, height: 50)))
+        popupButton.center = self.view.center
+        let circularView = CircularWavesEffectView(innerView: popupButton, withDisplacement: CGPoint(x: 50, y: 50))
+        self.view.addSubview(circularView)
+        self.view.backgroundColor = .black
     }
 }
 
