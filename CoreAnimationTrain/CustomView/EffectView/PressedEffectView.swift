@@ -34,14 +34,12 @@ class PressedEffectView: UIView {
     convenience init(center: CGPoint, radius: CGFloat) {
         self.init(frame: CGRect.zero)
         self.frame.size = CGSize(width: radius + 15 , height: radius + 15)
-        self.mainCircle.frame = self.bounds
-        self.secondCircle.frame = self.bounds
         self.center = center
-
+        
         self.mainCircle.frame = self.bounds
-        self.secondCircle.frame = self.bounds
+        self.secondCircle.frame = CGRect(origin: self.frame.origin.offset(x: 15, y: 15), size: CGSize(width: radius, height: radius))
         self.mainCircle.cornerRadius = self.bounds.width / 2
-        self.secondCircle.cornerRadius = self.bounds.width / 2
+        self.secondCircle.cornerRadius = radius / 2
         self.mainCircle.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
         self.secondCircle.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
         self.mainCircle.backgroundColor = UIColor.clear.cgColor
@@ -49,7 +47,7 @@ class PressedEffectView: UIView {
         self.mainCircle.borderWidth = 0
         self.secondCircle.borderWidth = 1
         self.layer.addSublayer(self.mainCircle)
-        //self.layer.addSublayer(self.secondCircle)
+        self.layer.addSublayer(self.secondCircle)
     }
     
     private override init(frame: CGRect) {
@@ -66,22 +64,32 @@ class PressedEffectView: UIView {
     }
     
     private func mainCircleAnimation() {
-        let pathWidthArray = [20,0]
+        let duration: Double = 0.5
+        
+        let pathWidthArray = [15,0]
         let borderWidthAnimation = CAKeyframeAnimation(keyPath: #keyPath(CALayer.borderWidth))
         borderWidthAnimation.values = pathWidthArray
-        borderWidthAnimation.duration = 0.5
+        borderWidthAnimation.duration = duration
         
-        let pathScaleArray = [CATransform3DMakeScale(0.5, 0.5, 0.5), CATransform3DMakeScale(2, 2, 2)]
+        let pathScaleArray = [CATransform3DMakeScale(1, 1, 1),
+                              CATransform3DMakeScale(0.5, 0.5, 0.5),
+                              CATransform3DMakeScale(1, 1, 1),
+                              CATransform3DMakeScale(1.5, 1.5, 1.5)]
         let scaleAnimation = CAKeyframeAnimation(keyPath: #keyPath(CALayer.transform))
         scaleAnimation.values = pathScaleArray
-        scaleAnimation.duration = 0.5
+        scaleAnimation.duration = duration
         
         let group = CAAnimationGroup()
         group.animations = [borderWidthAnimation, scaleAnimation]
-        group.duration = 0.5
         group.delegate = self
+        group.duration = duration
         self.mainCircle.add(group, forKey: "mainCircleAnimation")
     }
+    
+    private func secondCircleAnimation() {
+        
+    }
+    
     
 }
 
