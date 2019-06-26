@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     func example() {
         let popupButton = PopupButton(frame: CGRect(origin: .zero, size: CGSize(width: 50, height: 50)))
         popupButton.center = self.view.center
-        let circularView = CircularWavesEffectView(innerView: popupButton, withDisplacement: CGPoint(x: 50, y: 50))
+        let circularView = CircularWavesEffectView(innerView: popupButton, withDisplacement: CGPoint(x: 50, y: 50), innerAnimation: popupButton.startAnimation)
         self.view.addSubview(circularView)
         self.view.backgroundColor = .black
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PopupButton: UIView {
+class PopupButton: UIView, PressedEffectViewDelegate {
     
     private enum State {
         case normal
@@ -92,7 +92,7 @@ class PopupButton: UIView {
     
     private func sendAnimation(state: State)  {
         let animation = CABasicAnimation(keyPath: #keyPath(CALayer.position))
-        animation.duration = 1
+        animation.duration = 0.5
         animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         animation.fromValue = self.sendLayer.position
         animation.toValue = self.sendLayer.position.offset(x: 50, y: -50)
@@ -107,17 +107,16 @@ class PopupButton: UIView {
     
     private func closeAnimation(state: State) {
         let animationTransform = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
-        animationTransform.duration = 1.0
+        animationTransform.duration = 0.5
         animationTransform.timingFunction = CAMediaTimingFunction(name: .easeIn)
         animationTransform.fromValue = self.closeLayer.transform
-        animationTransform.delegate = self
         
         var transform: CATransform3D!
         
         switch state {
         case .normal:
             transform = CATransform3DMakeScale(1, 1, 1)
-            transform = CATransform3DRotate(transform, CGFloat.pi / 2 , 0, 0, 1)
+            transform = CATransform3DRotate(transform, CGFloat.pi, 0, 0, -1)
         default:
             transform = CATransform3DMakeScale(0.1, 0.1, 0.1)
             transform = CATransform3DRotate(transform, 0, 0, 0, 1)
@@ -130,14 +129,10 @@ class PopupButton: UIView {
     }
 }
 
-extension PopupButton: CAAnimationDelegate {
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        //print(self.closeLayer.position)
-    }
-}
-
 extension PopupButton: UIViewSimpleAnimation {
     func startAnimation() {
         self.beginAnimation()
     }
 }
+
+

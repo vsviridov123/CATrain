@@ -46,10 +46,10 @@ class PressedEffectView: UIView {
         self.secondCircle.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
         self.mainCircle.backgroundColor = UIColor.clear.cgColor
         self.secondCircle.backgroundColor = UIColor.clear.cgColor
-        self.mainCircle.borderWidth = 1
+        self.mainCircle.borderWidth = 0
         self.secondCircle.borderWidth = 1
         self.layer.addSublayer(self.mainCircle)
-        self.layer.addSublayer(self.secondCircle)
+        //self.layer.addSublayer(self.secondCircle)
     }
     
     private override init(frame: CGRect) {
@@ -66,13 +66,21 @@ class PressedEffectView: UIView {
     }
     
     private func mainCircleAnimation() {
-        let pathArray = [5.0, 10.0]
+        let pathWidthArray = [20,0]
         let borderWidthAnimation = CAKeyframeAnimation(keyPath: #keyPath(CALayer.borderWidth))
-        borderWidthAnimation.values = pathArray
+        borderWidthAnimation.values = pathWidthArray
         borderWidthAnimation.duration = 0.5
-        borderWidthAnimation.delegate = self
-        self.mainCircle.add(borderWidthAnimation, forKey: "borderWidthMaincircle")
         
+        let pathScaleArray = [CATransform3DMakeScale(0.5, 0.5, 0.5), CATransform3DMakeScale(2, 2, 2)]
+        let scaleAnimation = CAKeyframeAnimation(keyPath: #keyPath(CALayer.transform))
+        scaleAnimation.values = pathScaleArray
+        scaleAnimation.duration = 0.5
+        
+        let group = CAAnimationGroup()
+        group.animations = [borderWidthAnimation, scaleAnimation]
+        group.duration = 0.5
+        group.delegate = self
+        self.mainCircle.add(group, forKey: "mainCircleAnimation")
     }
     
 }
@@ -80,6 +88,7 @@ class PressedEffectView: UIView {
 extension PressedEffectView: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if flag {
+            self.delegate?.animationDidStop()
         }
     }
 }

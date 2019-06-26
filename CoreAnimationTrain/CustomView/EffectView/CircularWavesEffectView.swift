@@ -8,35 +8,40 @@
 
 import UIKit
 
-public class CircularWavesEffectView: UIView {
+public class CircularWavesEffectView: UIView, UIViewSimpleAnimation {
     
     private var state: Bool = true
     private var effectView: PressedEffectView!
     private var offset: CGPoint!
+    private var innerAnimation: () -> () = {}
     
-    public var durationAnimation: Double = 1.0
+    public var durationAnimation: Double = 0.5
     public var innerView: UIView!
     
     /**
      Create custom view with circular waves effect
      :param: innerView This is the view on which the effect is applied
      :param: withDisplacement This is the view offset by clicking on the specified CGPoint
-    */
-    init(innerView: UIView, withDisplacement: CGPoint?) {
+     */
+    init(innerView: UIView, withDisplacement: CGPoint?, innerAnimation: (()->())?) {
         super.init(frame: innerView.frame)
         self.innerView = innerView
-        
         self.offset = withDisplacement ?? .zero
-        let tap = UITapGestureRecognizer(target: self, action: #selector(startAnimating))
-        self.innerView.addGestureRecognizer(tap)
+        if let animation = innerAnimation {
+            self.innerAnimation = animation
+        }
         
         self.innerView.frame.origin = .zero
         self.effectView = PressedEffectView(center: self.innerView.center, radius: self.innerView.frame.width)
-        self.addSubview(self.effectView)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(startAnimating))
+        self.effectView.addGestureRecognizer(tap)
         self.addSubview(self.innerView)
+        self.addSubview(self.effectView)
+        
         
         self.clipsToBounds = false
         self.backgroundColor = .clear
+        self.effectView.delegate = self
     }
     
     public override init(frame: CGRect) {
@@ -48,11 +53,12 @@ public class CircularWavesEffectView: UIView {
     }
     
     @objc private func startAnimating() {
-        animationFrame()
-        if let view = self.innerView as? PopupButton {
-            view.startAnimation()
-        }
         self.effectView.startAnimation()
+    }
+    
+    func startAnimation() {
+        self.animationFrame()
+        self.innerAnimation()
     }
     
     private func animationFrame() {
@@ -66,7 +72,7 @@ public class CircularWavesEffectView: UIView {
             offsetView = self.frame.origin.offset(x: -self.offset.x, y: -self.offset.y)
         }
         
-        UIView.animate(withDuration: self.durationAnimation, animations: {
+        UIView.animate(withDuration: self.durationAnimation, delay: 0, options: .curveEaseIn, animations: {
             self.frame.origin = offsetView
         }) { (finish) in
             if finish {
@@ -74,4 +80,7 @@ public class CircularWavesEffectView: UIView {
             }
         }
     }
+}
+
+extension CircularWavesEffectView: PressedEffectViewDelegate {
 }

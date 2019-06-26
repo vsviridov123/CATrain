@@ -6,7 +6,7 @@
 //  Copyright © 2019 Vladislav Sviridov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol UIViewSimpleAnimation: class {
     func startAnimation()
