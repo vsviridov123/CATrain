@@ -30,7 +30,7 @@
 		A3B6C9CE22B78E4800DCF20C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3B6C9D122B78E4800DCF20C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A3B6C9D322B78E4800DCF20C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A3B6C9DA22B78F6200DCF20C /* PopupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PopupButton.swift; path = ../../../PopupButton.swift; sourceTree = "<group>"; };
+		A3B6C9DA22B78F6200DCF20C /* PopupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupButton.swift; sourceTree = "<group>"; };
 		A3B6C9DC22BA46A500DCF20C /* PressedEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressedEffectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

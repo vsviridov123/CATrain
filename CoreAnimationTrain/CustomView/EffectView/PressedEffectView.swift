@@ -14,7 +14,12 @@ protocol PressedEffectViewDelegate: class {
 
 extension PressedEffectViewDelegate where Self: UIViewSimpleAnimation {
     func animationDidStop() {
-        //guard let view = self as? UIViewSimpleAnimation else { return }
+        self.startAnimation()
+    }
+}
+
+extension PressedEffectViewDelegate where Self: UIViewAnimating {
+    func animationDidStop() {
         self.startAnimation()
     }
 }
