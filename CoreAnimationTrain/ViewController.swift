@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.example()
+        self.exampleIcon()
     }
     
     func example() {
@@ -21,6 +22,11 @@ class ViewController: UIViewController {
         let circularView = CircularWavesEffectView(innerView: popupButton, withDisplacement: CGPoint(x: 50, y: 50), innerAnimation: popupButton.startAnimation)
         self.view.addSubview(circularView)
         self.view.backgroundColor = .black
+    }
+    
+    func exampleIcon() {
+        let camera = CameraView(frame: CGRect(x: 50, y: 50, width: 100, height: 75))
+        self.view.addSubview(camera)
     }
 }
 
