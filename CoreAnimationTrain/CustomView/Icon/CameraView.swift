@@ -12,11 +12,13 @@ class CameraView: UIView {
     
     private var externalLayer: CAShapeLayer!
     private var internalLayer: CAShapeLayer!
+    private var withAnimation: Bool!
     
     public var colorCamera: UIColor = .white
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, withAnimation: Bool) {
         super.init(frame: frame)
+        self.withAnimation = withAnimation
     }
     
     required init?(coder aDecoder: NSCoder) {
