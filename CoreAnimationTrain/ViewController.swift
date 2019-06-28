@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     }
     
     func exampleIcon() {
-        let camera = CameraView(frame: CGRect(x: 50, y: 50, width: 100, height: 75), withAnimation: true)
+        let camera = CameraView(frame: CGRect(x: 50, y: 50, width: 30, height: 20), withAnimation: true)
         self.view.addSubview(camera)
     }
 }

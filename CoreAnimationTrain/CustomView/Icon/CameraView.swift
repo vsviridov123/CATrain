@@ -35,7 +35,7 @@ class CameraView: UIView {
         let path = UIBezierPath()
         path.lineJoinStyle = .round
         
-        // Примерный подгон размеров
+        // Примерное отношение размеров
         path.move(to: CGPoint(x: rect.width / 2, y: 0))
         path.addLine(to: path.currentPoint.offset(x: -self.frame.width / 6, y: 0))
         path.addQuadCurve(to: CGPoint(x: 0, y: 0).offset(x: 0, y: self.frame.height * 0.2), controlPoint: path.currentPoint.offset(x: 0, y: self.frame.height * 0.2))
@@ -59,7 +59,6 @@ class CameraView: UIView {
         let layer = CAShapeLayer()
         let path = UIBezierPath()
         
-        //path.move(to: CGPoint(x: rect.width / 2, y: rect.height / 2 + rect.height * 0.2))
         path.addArc(withCenter: CGPoint(x: rect.width / 2, y: rect.height / 2),
                     radius: rect.width / 6,
                     startAngle: 0,

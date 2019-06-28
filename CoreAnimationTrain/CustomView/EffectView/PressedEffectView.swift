@@ -32,6 +32,7 @@ class PressedEffectView: UIView {
     public weak var delegate: PressedEffectViewDelegate?
     public var duration: Double = 0.75
     public var circleColor: UIColor = .white
+    public var innerAnimation: Bool = true
     
     convenience init(center: CGPoint, radius: CGFloat) {
         self.init(frame: CGRect.zero)
@@ -116,7 +117,7 @@ class PressedEffectView: UIView {
 
 extension PressedEffectView: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        if flag {
+        if flag && self.innerAnimation {
             self.delegate?.animationDidStop()
         }
     }

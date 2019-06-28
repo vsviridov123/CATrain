@@ -84,7 +84,7 @@ class PopupButton: UIView, PressedEffectViewDelegate {
         self.layer.masksToBounds = true
     }
     
-    private func beginAnimation() {
+    private func beginAnimation() { 
         self.sendAnimation(state: self.state)
         self.closeAnimation(state: self.state)
         self.state = self.state == .normal ? .pressed : .normal
