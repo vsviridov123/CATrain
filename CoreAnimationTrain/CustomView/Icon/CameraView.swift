@@ -13,6 +13,7 @@ class CameraView: UIView {
     private var externalLayer: CAShapeLayer!
     private var internalLayer: CAShapeLayer!
     private var withAnimation: Bool!
+    private var strokeEnd = false
     
     public var colorCamera: UIColor = .white
     
@@ -58,12 +59,16 @@ class CameraView: UIView {
     private func drawInternalLayer(_ rect: CGRect) {
         let layer = CAShapeLayer()
         let path = UIBezierPath()
-        
-        path.addArc(withCenter: CGPoint(x: rect.width / 2, y: rect.height / 2),
-                    radius: rect.width / 6,
-                    startAngle: 0,
-                    endAngle: CGFloat.pi * 2,
-                    clockwise: true)
+    
+        let xOffset: CGFloat = rect.width / 2
+        let yOffset: CGFloat = rect.height / 2
+        path.move(to: CGPoint(x: xOffset, y: yOffset - rect.width / 6))
+        for i in 0...360 {
+            let radian = CGFloat((360 - i) - 90) * CGFloat.pi / 180.0
+            let x = rect.width / 6 * cos(CGFloat(radian))
+            let y = rect.width / 6 * sin(CGFloat(radian))
+            path.addLine(to: CGPoint(x: x + xOffset, y: y + yOffset))
+        }
         
         layer.path = path.cgPath
         layer.strokeColor = self.colorCamera.cgColor
@@ -77,11 +82,10 @@ class CameraView: UIView {
     
     private func addStrokeAnimation(_ layer: CAShapeLayer, forKey key: String) {
         let strokeAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.strokeEnd))
-        strokeAnimation.fromValue = self.externalLayer.strokeEnd
+        strokeAnimation.fromValue = layer.strokeEnd
         strokeAnimation.toValue = 1
-        strokeAnimation.duration = 1
+        strokeAnimation.duration = 0.75
         layer.add(strokeAnimation, forKey: key)
         layer.strokeEnd = 1
     }
-    
 }
