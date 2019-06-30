@@ -89,3 +89,4 @@ class CameraView: UIView {
         layer.strokeEnd = 1
     }
 }
+
