@@ -12,8 +12,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.example()
-        self.exampleIcon()
+        //self.example()
+        //self.exampleIcon()
+        self.exampleMenu()
     }
     
     func example() {
@@ -25,8 +26,20 @@ class ViewController: UIViewController {
     }
     
     func exampleIcon() {
-        let camera = CameraView(frame: CGRect(x: 50, y: 50, width: 30, height: 20), withAnimation: true)
+        let frame = CGRect(x: 50, y: 50, width: 30, height: 20)
+        let camera = CameraIcon.getCameraIcon(frame: frame, color: .white)
+        camera.startAnimation()
         self.view.addSubview(camera)
+        
+    }
+    
+    func exampleMenu()  {
+        let frameIcon = CGRect(x: 50, y: 50, width: 30, height: 20)
+        let cellObject1 = MenuViewCellObject.init(name: "Camera", icon: CameraIcon.getCameraIcon(frame: frameIcon, color: .white))
+        let cellObject2 = MenuViewCellObject.init(name: "Camera", icon: CameraIcon.getCameraIcon(frame: frameIcon, color: .white))
+        let cellObject3 = MenuViewCellObject.init(name: "Camera", icon: CameraIcon.getCameraIcon(frame: frameIcon, color: .white))
+        let menu = MenuView(cellObjects: [cellObject1, cellObject2, cellObject3], frame: CGRect(x: 50, y: 50, width: 200, height: 200))
+        self.view.addSubview(menu)
     }
 }
 

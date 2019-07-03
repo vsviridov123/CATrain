@@ -18,6 +18,13 @@
 		A3B6C9D222B78E4800DCF20C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3B6C9D022B78E4800DCF20C /* LaunchScreen.storyboard */; };
 		A3B6C9DB22B78F6200DCF20C /* PopupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6C9DA22B78F6200DCF20C /* PopupButton.swift */; };
 		A3B6C9DD22BA46A500DCF20C /* PressedEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6C9DC22BA46A500DCF20C /* PressedEffectView.swift */; };
+		AE09F79322C8FE6A00802915 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09F79222C8FE6A00802915 /* MenuView.swift */; };
+		AE09F79522C8FE7900802915 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE09F79422C8FE7900802915 /* MenuView.xib */; };
+		AE09F79B22C9012700802915 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09F79922C9012700802915 /* MenuViewCell.swift */; };
+		AE09F79C22C9012700802915 /* MenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE09F79A22C9012700802915 /* MenuViewCell.xib */; };
+		AE09F79E22C9013800802915 /* MenuViewCellObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09F79D22C9013800802915 /* MenuViewCellObject.swift */; };
+		AE09F7A022C901FC00802915 /* IconAnimationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09F79F22C901FC00802915 /* IconAnimationProtocol.swift */; };
+		AE18CFFC22CA46A3004CE026 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE18CFFB22CA46A3004CE026 /* IconView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +41,13 @@
 		A3B6C9D322B78E4800DCF20C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3B6C9DA22B78F6200DCF20C /* PopupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupButton.swift; sourceTree = "<group>"; };
 		A3B6C9DC22BA46A500DCF20C /* PressedEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressedEffectView.swift; sourceTree = "<group>"; };
+		AE09F79222C8FE6A00802915 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		AE09F79422C8FE7900802915 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
+		AE09F79922C9012700802915 /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
+		AE09F79A22C9012700802915 /* MenuViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewCell.xib; sourceTree = "<group>"; };
+		AE09F79D22C9013800802915 /* MenuViewCellObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCellObject.swift; sourceTree = "<group>"; };
+		AE09F79F22C901FC00802915 /* IconAnimationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconAnimationProtocol.swift; sourceTree = "<group>"; };
+		AE18CFFB22CA46A3004CE026 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				A3B6C9DC22BA46A500DCF20C /* PressedEffectView.swift */,
-				A3328BFC22BCD86E0014A686 /* CircularWavesEffectView.swift */,
 			);
 			path = EffectView;
 			sourceTree = "<group>";
@@ -68,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				A3328C0822C505B00014A686 /* CameraView.swift */,
+				AE18CFFB22CA46A3004CE026 /* IconView.swift */,
 			);
 			path = Icon;
 			sourceTree = "<group>";
@@ -106,12 +120,51 @@
 		A3B6C9D922B78E6000DCF20C /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				AE18CFFE22CA4943004CE026 /* Animation */,
+				AE18CFFD22CA48BA004CE026 /* Button */,
+				AE09F79122C8FE5400802915 /* Menu */,
 				A3328C0722C5059F0014A686 /* Icon */,
-				A3B6C9DA22B78F6200DCF20C /* PopupButton.swift */,
 				A3328C0122C21C300014A686 /* EffectView */,
-				A3328C0322C277380014A686 /* UIViewSimpleAnimation.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		AE09F79122C8FE5400802915 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				AE09F79622C900D400802915 /* Cell */,
+				AE09F79222C8FE6A00802915 /* MenuView.swift */,
+				AE09F79422C8FE7900802915 /* MenuView.xib */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		AE09F79622C900D400802915 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AE09F79922C9012700802915 /* MenuViewCell.swift */,
+				AE09F79A22C9012700802915 /* MenuViewCell.xib */,
+				AE09F79D22C9013800802915 /* MenuViewCellObject.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		AE18CFFD22CA48BA004CE026 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				A3B6C9DA22B78F6200DCF20C /* PopupButton.swift */,
+				A3328BFC22BCD86E0014A686 /* CircularWavesEffectView.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		AE18CFFE22CA4943004CE026 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				AE09F79F22C901FC00802915 /* IconAnimationProtocol.swift */,
+				A3328C0322C277380014A686 /* UIViewSimpleAnimation.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +226,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3B6C9D222B78E4800DCF20C /* LaunchScreen.storyboard in Resources */,
+				AE09F79522C8FE7900802915 /* MenuView.xib in Resources */,
+				AE09F79C22C9012700802915 /* MenuViewCell.xib in Resources */,
 				A3B6C9CF22B78E4800DCF20C /* Assets.xcassets in Resources */,
 				A3B6C9CD22B78E4800DCF20C /* Main.storyboard in Resources */,
 			);
@@ -186,13 +241,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3B6C9DD22BA46A500DCF20C /* PressedEffectView.swift in Sources */,
+				AE09F79B22C9012700802915 /* MenuViewCell.swift in Sources */,
 				A3B6C9CA22B78E4800DCF20C /* ViewController.swift in Sources */,
+				AE18CFFC22CA46A3004CE026 /* IconView.swift in Sources */,
 				A3B6C9C822B78E4800DCF20C /* AppDelegate.swift in Sources */,
 				A3328C0422C277380014A686 /* UIViewSimpleAnimation.swift in Sources */,
+				AE09F79322C8FE6A00802915 /* MenuView.swift in Sources */,
 				A3328C0022BCD8EE0014A686 /* CoreGraphicsExtension.swift in Sources */,
 				A3B6C9DB22B78F6200DCF20C /* PopupButton.swift in Sources */,
 				A3328BFD22BCD86E0014A686 /* CircularWavesEffectView.swift in Sources */,
 				A3328C0922C505B00014A686 /* CameraView.swift in Sources */,
+				AE09F79E22C9013800802915 /* MenuViewCellObject.swift in Sources */,
+				AE09F7A022C901FC00802915 /* IconAnimationProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
