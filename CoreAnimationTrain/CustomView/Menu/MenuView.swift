@@ -38,6 +38,7 @@ class MenuView: UIView {
         self.tableView.register(cell, forCellReuseIdentifier: Constants.menuCellIdentifier)
         self.tableView.backgroundColor = UIColor.clear
         self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.separatorColor = .clear
     }
     
     required init?(coder aDecoder: NSCoder) {

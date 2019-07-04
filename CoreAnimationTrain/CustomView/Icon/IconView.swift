@@ -20,10 +20,14 @@ class Icon: UIView,IconAnimation {
             self.iconLayers.forEach{self.layer.addSublayer($0)}
         }
     }
+    
     var isVisible: Bool! {
         didSet {
             let value: CGFloat = isVisible ? 1 : 0
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
             self.iconLayers.forEach { $0.strokeEnd = value}
+            CATransaction.commit()
         }
     }
     

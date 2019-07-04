@@ -19,13 +19,10 @@ class MenuViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.clear
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func configure(cellObject: MenuViewCellObject) {
@@ -34,10 +31,11 @@ class MenuViewCell: UITableViewCell {
         self.iconView.backgroundColor = .clear
 //        self.bottomContraintName.constant = -20.0
         self.cellObject = cellObject
+        self.name.tintColor = .white
     }
     
     public func startCellAnimation(_ offset: Double) {
-        //cellObject.icon.timeOffset = offset
+        cellObject.icon.timeOffset = offset
         cellObject.icon.startAnimation()
 //        UIView.animate(withDuration: cellObject.icon.duration * 0.25,
 //                       delay: offset + cellObject.icon.duration * 0.75,
