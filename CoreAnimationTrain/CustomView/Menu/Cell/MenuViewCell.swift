@@ -30,22 +30,22 @@ class MenuViewCell: UITableViewCell {
     
     func configure(cellObject: MenuViewCellObject) {
         self.name.text = cellObject.name
-        self.iconView = cellObject.icon
-        
-        self.bottomContraintName.constant = -20.0
+        self.iconView.addSubview(cellObject.icon)
+        self.iconView.backgroundColor = .clear
+//        self.bottomContraintName.constant = -20.0
         self.cellObject = cellObject
     }
     
     public func startCellAnimation(_ offset: Double) {
-        cellObject.icon.timeOffset = offset
-        cellObject.icon.startAnimation() 
-        UIView.animate(withDuration: cellObject.icon.duration * 0.25,
-                       delay: offset + cellObject.icon.duration * 0.75,
-                       options: .curveEaseOut,
-                       animations: {
-                        self.bottomContraintName.constant = 10
-        }) { (finish) in
-            // empty
-        }
+        //cellObject.icon.timeOffset = offset
+        cellObject.icon.startAnimation()
+//        UIView.animate(withDuration: cellObject.icon.duration * 0.25,
+//                       delay: offset + cellObject.icon.duration * 0.75,
+//                       options: .curveEaseOut,
+//                       animations: {
+////                        self.bottomContraintName.constant = 10
+//        }) { (finish) in
+//            // empty
+//        }
     }
 }

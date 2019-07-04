@@ -24,12 +24,6 @@ extension IconAnimation {
     }
      
     private func strokeAnimation(layer: inout CAShapeLayer) {
-        let strokeBasicAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.strokeEnd))
-        strokeBasicAnimation.duration = self.duration
-        strokeBasicAnimation.timeOffset = self.timeOffset
-        strokeBasicAnimation.fromValue = layer.strokeEnd
-        strokeBasicAnimation.toValue = 1 - layer.strokeEnd
-        layer.add(strokeBasicAnimation, forKey: "")
-        layer.strokeEnd = 1 - layer.strokeEnd
+        layer.strokeEnd = (1 - layer.strokeEnd)
     }
 }

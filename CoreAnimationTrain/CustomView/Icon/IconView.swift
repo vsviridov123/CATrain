@@ -11,17 +11,31 @@ import UIKit
 
 class Icon: UIView,IconAnimation {
     
-    var iconLayers: [CAShapeLayer] = []
     var duration: Double = 0.75
     var timeOffset: Double = 0.0
     var iconColor: UIColor = .white
     
+    var iconLayers: [CAShapeLayer] = [] {
+        didSet {
+            self.iconLayers.forEach{self.layer.addSublayer($0)}
+        }
+    }
+    var isVisible: Bool! {
+        didSet {
+            let value: CGFloat = isVisible ? 1 : 0
+            self.iconLayers.forEach { $0.strokeEnd = value}
+        }
+    }
+    
+    /**
+     Initial iconView
+     :param: frame Size icon
+     :param: layers Array layers who draws icon
+    */
     init(frame: CGRect, layers: [CAShapeLayer]) {
         super.init(frame: frame)
         self.iconLayers = layers
-        for layer in layers {
-            self.layer.addSublayer(layer)
-        }
+        self.isVisible = false
     }
     
     private override init(frame: CGRect) {

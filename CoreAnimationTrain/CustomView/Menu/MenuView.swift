@@ -37,6 +37,7 @@ class MenuView: UIView {
         let cell = UINib(nibName: "MenuViewCell", bundle: nil)
         self.tableView.register(cell, forCellReuseIdentifier: Constants.menuCellIdentifier)
         self.tableView.backgroundColor = UIColor.clear
+        self.tableView.rowHeight = UITableView.automaticDimension
     }
     
     required init?(coder aDecoder: NSCoder) {
