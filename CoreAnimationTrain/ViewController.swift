@@ -40,7 +40,6 @@ class ViewController: UIViewController {
         let frameIcon = CGRect(x: 0, y: 0, width: 30, height: 20)
         let icon = CameraIcon.getCameraIcon(frame: frameIcon, color: .white)
         icon.center = self.view.center
-        //icon.startAnimation()
         self.icon = icon
         self.view.addSubview(icon)
         let cellObject1 = MenuViewCellObject.init(name: "Camera", icon: CameraIcon.getCameraIcon(frame: frameIcon, color: .white))
@@ -63,6 +62,7 @@ class ViewController: UIViewController {
     
     @objc private func tap(_ sender: UIButton) {
         self.menu.tableView.reloadData()
+        self.icon.isVisible.toggle()
         //self.icon.startAnimation()
     }
 }

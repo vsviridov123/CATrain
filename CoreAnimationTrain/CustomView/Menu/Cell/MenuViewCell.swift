@@ -31,19 +31,20 @@ class MenuViewCell: UITableViewCell {
         self.iconView.backgroundColor = .clear
 //        self.bottomContraintName.constant = -20.0
         self.cellObject = cellObject
-        self.name.tintColor = .white
+        self.name.backgroundColor = .white 
     }
     
     public func startCellAnimation(_ offset: Double) {
         cellObject.icon.timeOffset = offset
         cellObject.icon.startAnimation()
-//        UIView.animate(withDuration: cellObject.icon.duration * 0.25,
-//                       delay: offset + cellObject.icon.duration * 0.75,
-//                       options: .curveEaseOut,
-//                       animations: {
-////                        self.bottomContraintName.constant = 10
-//        }) { (finish) in
-//            // empty
-//        }
+        UIView.animate(withDuration: cellObject.icon.duration * 0.25,
+                       delay: offset + cellObject.icon.duration * 0.75,
+                       options: .curveEaseOut,
+                       animations: {
+                        self.frame = self.frame.offsetBy(dx: -10, dy: 10)
+//                        self.bottomContraintName.constant = 10
+        }) { (finish) in
+            // empty
+        }
     }
 }

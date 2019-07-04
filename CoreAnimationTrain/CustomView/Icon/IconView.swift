@@ -15,18 +15,14 @@ class Icon: UIView,IconAnimation {
     var timeOffset: Double = 0.0
     var iconColor: UIColor = .white
     
-    var iconLayers: [CAShapeLayer] = [] {
-        didSet {
-            self.iconLayers.forEach{self.layer.addSublayer($0)}
-        }
-    }
+    var iconLayers: [CAShapeLayer] = []
     
     var isVisible: Bool! {
         didSet {
             let value: CGFloat = isVisible ? 1 : 0
             CATransaction.begin()
             CATransaction.setDisableActions(true)
-            self.iconLayers.forEach { $0.strokeEnd = value}
+            self.iconLayers.forEach { $0.strokeEnd = value }
             CATransaction.commit()
         }
     }
@@ -39,6 +35,7 @@ class Icon: UIView,IconAnimation {
     init(frame: CGRect, layers: [CAShapeLayer]) {
         super.init(frame: frame)
         self.iconLayers = layers
+        self.iconLayers.forEach{self.layer.addSublayer($0)}
         self.isVisible = false
     }
     

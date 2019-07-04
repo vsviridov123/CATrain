@@ -12,7 +12,6 @@ import UIKit
 struct MenuViewCellObject {
     var name: String
     var icon: Icon
-    
 }
 
 
