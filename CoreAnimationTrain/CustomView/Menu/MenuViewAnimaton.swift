@@ -23,7 +23,7 @@ extension MenuView {
         
         switch state {
         case .rolled:
-            newRadius = newFrame.width / 2
+            newRadius = self.frame.width / 2
         case .normal:
             newRadius = 15.0
         }
@@ -38,12 +38,18 @@ extension MenuView {
         scaleAnimation.toValue = CATransform3DMakeScale(newFrame.width / self.frame.width,newFrame.height / self.frame.height, 1)
         scaleAnimation.duration = 1
         
+        let positionAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.position))
+        positionAnimation.duration = duration
+        positionAnimation.fromValue = self.contentView.layer.position
+        positionAnimation.toValue = newFrame.origin
+        
         let groupAnimaiton = CAAnimationGroup()
         groupAnimaiton.duration = 1.0
-        groupAnimaiton.animations = [cornerAnimation]
+        groupAnimaiton.animations = [cornerAnimation, scaleAnimation,positionAnimation]
         
         self.contentView.layer.cornerRadius = newRadius
         self.contentView.layer.transform = CATransform3DMakeScale(newFrame.width / self.frame.width,newFrame.height / self.frame.height, 1)
+        self.contentView.layer.position = newFrame.origin
         self.contentView.layer.add(groupAnimaiton, forKey: AnimationConstants.cornerAnimationName)
         
     }

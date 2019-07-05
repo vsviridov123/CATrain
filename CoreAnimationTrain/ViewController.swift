@@ -65,9 +65,13 @@ class ViewController: UIViewController {
         self.icon.isVisible.toggle()
         switch self.menu.state {
         case .normal:
+            self.menu.tableView.isHidden = true
             self.menu.popupAnimation(to: .rolled, newFrame: CGRect(x: 200, y: 200, width: 50, height: 50))
+            self.menu.tableView.reloadData()
         case .rolled:
-            self.menu.popupAnimation(to: .normal, newFrame: CGRect(x:200, y:200, width: 200, height: 200))
+            self.menu.popupAnimation(to: .normal, newFrame: CGRect(x:100, y:100, width: 200, height: 200))
+            self.menu.tableView.isHidden = false
+            self.menu.tableView.reloadData()
         }
         
     }
