@@ -21,4 +21,8 @@ public extension CGSize {
         self.width = self.width + width
         self.height = self.height + height
     }
+    
+    func scaleSize(multiplierWidth: CGFloat, multiplierHeight: CGFloat) -> CGSize {
+        return CGSize(width: self.width * multiplierWidth, height: self.height * multiplierHeight)
+    }
 }

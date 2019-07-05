@@ -16,6 +16,13 @@ class MenuView: UIView {
 
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    
+    public enum MenuViewState {
+        case rolled
+        case normal
+    }
+    public var state: MenuViewState = .normal
+    
     private var cellObject: [MenuViewCellObject]!
     private var withStartAnimation: Bool = true
     
@@ -70,3 +77,5 @@ extension MenuView: UITableViewDelegate {
         self.withStartAnimation = false
     }
 }
+
+

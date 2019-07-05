@@ -25,6 +25,7 @@
 		AE09F79E22C9013800802915 /* MenuViewCellObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09F79D22C9013800802915 /* MenuViewCellObject.swift */; };
 		AE09F7A022C901FC00802915 /* IconAnimationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09F79F22C901FC00802915 /* IconAnimationProtocol.swift */; };
 		AE18CFFC22CA46A3004CE026 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE18CFFB22CA46A3004CE026 /* IconView.swift */; };
+		AE4F7C3D22CE68400047AD96 /* MenuViewAnimaton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4F7C3C22CE68400047AD96 /* MenuViewAnimaton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		AE09F79D22C9013800802915 /* MenuViewCellObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCellObject.swift; sourceTree = "<group>"; };
 		AE09F79F22C901FC00802915 /* IconAnimationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconAnimationProtocol.swift; sourceTree = "<group>"; };
 		AE18CFFB22CA46A3004CE026 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
+		AE4F7C3C22CE68400047AD96 /* MenuViewAnimaton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewAnimaton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			children = (
 				AE09F79622C900D400802915 /* Cell */,
 				AE09F79222C8FE6A00802915 /* MenuView.swift */,
+				AE4F7C3C22CE68400047AD96 /* MenuViewAnimaton.swift */,
 				AE09F79422C8FE7900802915 /* MenuView.xib */,
 			);
 			path = Menu;
@@ -252,6 +255,7 @@
 				A3328BFD22BCD86E0014A686 /* CircularWavesEffectView.swift in Sources */,
 				A3328C0922C505B00014A686 /* CameraView.swift in Sources */,
 				AE09F79E22C9013800802915 /* MenuViewCellObject.swift in Sources */,
+				AE4F7C3D22CE68400047AD96 /* MenuViewAnimaton.swift in Sources */,
 				AE09F7A022C901FC00802915 /* IconAnimationProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

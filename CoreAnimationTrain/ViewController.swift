@@ -53,17 +53,23 @@ class ViewController: UIViewController {
         self.view.backgroundColor = .black
         
         let button = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 100))
-        button.backgroundColor = .white
+        button.backgroundColor = .black
         button.addTarget(self, action: #selector(tap(_:)), for: .touchDown)
         self.view.addSubview(button)
         self.menu = menu
         self.view.addSubview(menu)
+        self.view.backgroundColor = .white
     }
     
     @objc private func tap(_ sender: UIButton) {
-        self.menu.tableView.reloadData()
         self.icon.isVisible.toggle()
-        //self.icon.startAnimation()
+        switch self.menu.state {
+        case .normal:
+            self.menu.popupAnimation(to: .rolled, newFrame: CGRect(x: 200, y: 200, width: 50, height: 50))
+        case .rolled:
+            self.menu.popupAnimation(to: .normal, newFrame: CGRect(x:200, y:200, width: 200, height: 200))
+        }
+        
     }
 }
 
