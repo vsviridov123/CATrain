@@ -21,7 +21,16 @@ class MenuView: UIView {
         case rolled
         case normal
     }
-    public var state: MenuViewState = .normal
+    public var state: MenuViewState = .normal {
+        didSet {
+            switch self.state {
+            case .rolled:
+                self.tableView.isHidden = true
+            case .normal:
+                self.tableView.isHidden = false
+            }
+        }
+    }
     
     private var cellObject: [MenuViewCellObject]!
     private var withStartAnimation: Bool = true

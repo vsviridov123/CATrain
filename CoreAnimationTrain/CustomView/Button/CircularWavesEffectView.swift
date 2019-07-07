@@ -14,6 +14,7 @@ public class CircularWavesEffectView: UIView, UIViewSimpleAnimation {
     private var effectView: PressedEffectView!
     private var offset: CGPoint!
     private var innerAnimation: () -> () = {}
+    private var backgroundViewAnimaiton: () -> () = {}
     
     public var durationAnimation: Double = 0.5
     public var innerView: UIView!
@@ -23,12 +24,15 @@ public class CircularWavesEffectView: UIView, UIViewSimpleAnimation {
      :param: innerView This is the view on which the effect is applied
      :param: withDisplacement This is the view offset by clicking on the specified CGPoint
      */
-    init(innerView: UIView, withDisplacement: CGPoint?, innerAnimation: (()->())?) {
+    init(innerView: UIView, withDisplacement: CGPoint?, innerAnimation: (()->())?, backgroundViewAnimation: ( ()->() )? ) {
         super.init(frame: innerView.frame)
         self.innerView = innerView
         self.offset = withDisplacement ?? .zero
         if let animation = innerAnimation {
             self.innerAnimation = animation
+        }
+        if let backAnimation = backgroundViewAnimation {
+            self.backgroundViewAnimaiton = backAnimation
         }
         
         self.innerView.frame.origin = .zero
@@ -38,11 +42,12 @@ public class CircularWavesEffectView: UIView, UIViewSimpleAnimation {
         self.addSubview(self.innerView)
         self.addSubview(self.effectView)
         
-        
         self.clipsToBounds = false
         self.backgroundColor = .clear
         self.effectView.delegate = self
     }
+    
+    
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -77,10 +82,12 @@ public class CircularWavesEffectView: UIView, UIViewSimpleAnimation {
         }) { (finish) in
             if finish {
                 self.state.toggle()
+                self.backgroundViewAnimaiton()
             }
         }
     }
 }
 
 extension CircularWavesEffectView: PressedEffectViewDelegate {
+    // start default animation from protocol
 }

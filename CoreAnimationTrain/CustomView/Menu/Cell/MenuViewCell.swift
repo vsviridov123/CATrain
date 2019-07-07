@@ -12,7 +12,6 @@ class MenuViewCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var iconView: UIView!
-    @IBOutlet weak var bottomContraintName: NSLayoutConstraint!
     
     private var cellObject: MenuViewCellObject!
     
@@ -29,9 +28,13 @@ class MenuViewCell: UITableViewCell {
         self.name.text = cellObject.name
         self.iconView.addSubview(cellObject.icon)
         self.iconView.backgroundColor = .clear
-//        self.bottomContraintName.constant = -20.0
         self.cellObject = cellObject
-        self.name.backgroundColor = .white 
+        self.name.textColor = .white
+        let xName = self.iconView.frame.origin.x + self.iconView.frame.width + 20
+        let yName = self.frame.height + self.name.frame.height
+        self.name.frame.origin = CGPoint(x: xName, y: yName)
+        self.layer.masksToBounds = true
+        self.name.sizeToFit()
     }
     
     public func startCellAnimation(_ offset: Double) {
@@ -41,8 +44,7 @@ class MenuViewCell: UITableViewCell {
                        delay: offset + cellObject.icon.duration * 0.75,
                        options: .curveEaseOut,
                        animations: {
-                        self.frame = self.frame.offsetBy(dx: -10, dy: 10)
-//                        self.bottomContraintName.constant = 10
+                         self.name.frame.origin.y = self.iconView.center.y - self.name.frame.height / 2
         }) { (finish) in
             // empty
         }

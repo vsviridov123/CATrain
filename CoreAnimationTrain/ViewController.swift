@@ -15,15 +15,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.example()
-//        self.exampleIcon()
+        //self.example()
+        self.exampleIcon()
         self.exampleMenu()
     }
     
     func example() {
         let popupButton = PopupButton(frame: CGRect(origin: .zero, size: CGSize(width: 50, height: 50)))
         popupButton.center = self.view.center
-        let circularView = CircularWavesEffectView(innerView: popupButton, withDisplacement: CGPoint(x: 50, y: 50), innerAnimation: popupButton.startAnimation)
+        let circularView = CircularWavesEffectView(innerView: popupButton, withDisplacement: CGPoint(x: 50, y: 50), innerAnimation: popupButton.startAnimation, backgroundViewAnimation: nil)
         self.view.addSubview(circularView)
         self.view.backgroundColor = .black
     }
@@ -49,7 +49,15 @@ class ViewController: UIViewController {
         let cellObject5 = MenuViewCellObject.init(name: "Camera", icon: CameraIcon.getCameraIcon(frame: frameIcon, color: .white))
         let cellObject6 = MenuViewCellObject.init(name: "Camera", icon: CameraIcon.getCameraIcon(frame: frameIcon, color: .white))
         let cellObject7 = MenuViewCellObject.init(name: "Camera", icon: CameraIcon.getCameraIcon(frame: frameIcon, color: .white))
-        let menu = MenuView(cellObjects: [cellObject1, cellObject2, cellObject3, cellObject4, cellObject5, cellObject6, cellObject7], frame: CGRect(x: 50, y: 50, width: 200, height: 200))
+//        let menu = MenuView(cellObjects: [cellObject1, cellObject2, cellObject3, cellObject4, cellObject5, cellObject6, cellObject7], frame: CGRect(x: 50, y: 50, width: 200, height: 200))
+        let menu = MenuView(cellObjects: [cellObject1, cellObject2, cellObject3, cellObject4, cellObject5, cellObject6, cellObject7], frame: CGRect(x: 50, y: 50, width: 50, height: 50))
+        menu.center = self.view.center
+        menu.state = .rolled
+        
+        let popupButton = PopupButton(frame: CGRect(origin: .zero, size: CGSize(width: 50, height: 50)))
+        popupButton.center = self.view.center
+        let circularView = CircularWavesEffectView(innerView: popupButton, withDisplacement: CGPoint(x: 50, y: 50), innerAnimation: popupButton.startAnimation, backgroundViewAnimation: menu.tableView.reloadData)
+        
         self.view.backgroundColor = .black
         
         let button = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 100))
@@ -58,6 +66,7 @@ class ViewController: UIViewController {
         self.view.addSubview(button)
         self.menu = menu
         self.view.addSubview(menu)
+        self.view.addSubview(circularView)
         self.view.backgroundColor = .white
     }
     
@@ -75,6 +84,8 @@ class ViewController: UIViewController {
         }
         
     }
+    
+    
 }
 
 
