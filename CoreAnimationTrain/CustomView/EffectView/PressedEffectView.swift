@@ -24,6 +24,11 @@ extension PressedEffectViewDelegate where Self: UIViewAnimating {
     }
 }
 
+fileprivate enum AnimationConstants {
+    static let mainCircleAnimation = "mainCircleAnimation"
+    static let secondCircleAnimation = "secondCircleAnimation"
+}
+
 class PressedEffectView: UIView {
     
     private var mainCircle = CALayer()
@@ -88,7 +93,7 @@ class PressedEffectView: UIView {
         group.animations = [borderWidthAnimation, scaleAnimation]
         group.delegate = self
         group.duration = duration
-        self.mainCircle.add(group, forKey: "mainCircleAnimation")
+        self.mainCircle.add(group, forKey: AnimationConstants.mainCircleAnimation)
     }
     
     private func secondCircleAnimation() {
@@ -111,7 +116,7 @@ class PressedEffectView: UIView {
         group.animations = [borderWidthAnimation, scaleAnimation]
         group.duration = self.duration
         group.timeOffset = timeOffset
-        self.secondCircle.add(group, forKey: "secondCircleAnimation")
+        self.secondCircle.add(group, forKey: AnimationConstants.secondCircleAnimation)
     }
 }
 

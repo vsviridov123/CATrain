@@ -20,9 +20,11 @@ public class CircularWavesEffectView: UIView, UIViewSimpleAnimation {
     public var innerView: UIView!
     
     /**
-     Create custom view with circular waves effect
-     :param: innerView This is the view on which the effect is applied
-     :param: withDisplacement This is the view offset by clicking on the specified CGPoint
+    Create custom view with circular waves effect.
+     - Parameter innerView: This is the view on which the effect is applied.
+     - Parameter withDisplacement: This is the view offset by clicking on the specified CGPoint.
+     - Parameter innerAnimation: This is the animation of innerView
+     - Parameter backgroundViewAnimation: This is the animation of backgroundView
      */
     init(innerView: UIView, withDisplacement: CGPoint?, innerAnimation: (()->())?, backgroundViewAnimation: ( ()->() )? ) {
         super.init(frame: innerView.frame)

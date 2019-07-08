@@ -17,6 +17,7 @@ class MenuView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    public var stateValue: [MenuViewState:CGRect] = [:]
     public enum MenuViewState {
         case rolled
         case normal
@@ -26,7 +27,9 @@ class MenuView: UIView {
             switch self.state {
             case .rolled:
                 self.tableView.isHidden = true
+                self.contentView.layer.cornerRadius = self.frame.width / 2
             case .normal:
+                self.contentView.layer.cornerRadius = 15
                 self.tableView.isHidden = false
             }
         }
@@ -39,6 +42,24 @@ class MenuView: UIView {
         super.init(frame: frame)
         self.cellObject = cellObjects
         self.setupInitState()
+    }
+    
+    /**
+     Initial view
+     - Parameter initState: Initial state view
+     - Parameter value: This is control frame for States. They are necessary for animation
+     - Parameter cellObjects: Date for cell in tableView
+    */
+    init(initState: MenuViewState, value: [MenuViewState:CGRect], cellObjects: [MenuViewCellObject]) {
+        guard let valueInit = value[initState] else {
+            super.init(frame: .zero)
+            return
+        }
+        super.init(frame: valueInit)
+        self.cellObject = cellObjects
+        self.setupInitState()
+        self.stateValue = value
+        self.state = initState
     }
     
     private func setupInitState() {

@@ -29,8 +29,8 @@ class Icon: UIView,IconAnimation {
     
     /**
      Initial iconView
-     :param: frame Size icon
-     :param: layers Array layers who draws icon
+     - Parameter frame: Size icon
+     - Parameter layers: Array layers who draws icon
     */
     init(frame: CGRect, layers: [CAShapeLayer]) {
         super.init(frame: frame)
