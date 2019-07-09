@@ -59,7 +59,9 @@ class MenuView: UIView {
         self.cellObject = cellObjects
         self.setupInitState()
         self.stateValue = value
-        self.state = initState
+        defer {
+            self.state = initState
+        }
     }
     
     private func setupInitState() {
