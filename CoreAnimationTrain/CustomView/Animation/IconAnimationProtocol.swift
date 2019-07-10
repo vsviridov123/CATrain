@@ -33,6 +33,5 @@ extension IconAnimation {
         layer.strokeEnd = (1 - layer.strokeEnd)
         layer.removeAllAnimations()
         layer.add(strokeAnim, forKey: "one")
-        
     }
 }

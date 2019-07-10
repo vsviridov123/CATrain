@@ -81,10 +81,10 @@ public class CircularWavesEffectView: UIView, UIViewSimpleAnimation {
         
         UIView.animate(withDuration: self.durationAnimation, delay: 0, options: .curveEaseIn, animations: {
             self.frame.origin = offsetView
+            self.backgroundViewAnimaiton()	
         }) { (finish) in
             if finish {
                 self.state.toggle()
-                self.backgroundViewAnimaiton()
             }
         }
     }

@@ -18,11 +18,11 @@ extension MenuView {
     public func animationRolledFromCurrentState() {
         switch self.state {
         case .rolled:
-            self.popupAnimation(to: .normal, newFrame: self.stateValue[.normal] ?? .zero)
             self.state = .normal
+            self.popupAnimation(to: .normal, newFrame: self.stateValue[.normal] ?? .zero)
         case .normal:
-            self.popupAnimation(to: .rolled, newFrame: self.stateValue[.rolled] ?? .zero)
             self.state = .rolled
+            self.popupAnimation(to: .rolled, newFrame: self.stateValue[.rolled] ?? .zero)
         }
     }
     
@@ -51,17 +51,19 @@ extension MenuView {
         
         let positionAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.position))
         positionAnimation.duration = duration
-        positionAnimation.fromValue = self.contentView.layer.position
-        positionAnimation.toValue = newFrame.origin
+        positionAnimation.fromValue = self.layer.position
+        positionAnimation.toValue = newFrame.origin.offset(x: newFrame.width / 2, y: newFrame.height / 2)
 
         let groupAnimaiton = CAAnimationGroup()
         groupAnimaiton.duration = duration
-        groupAnimaiton.animations = [cornerAnimation, scaleAnimation,positionAnimation]
+        groupAnimaiton.animations = [cornerAnimation, scaleAnimation]
         
         self.contentView.layer.cornerRadius = newRadius
         self.contentView.layer.transform = CATransform3DMakeScale(newFrame.width / self.frame.width,newFrame.height / self.frame.height, 1)
-        self.contentView.layer.position = newFrame.origin
         self.contentView.layer.add(groupAnimaiton, forKey: AnimationConstants.cornerAnimationName)
+        self.layer.position = newFrame.origin.offset(x: newFrame.width / 2, y: newFrame.height / 2)
+        self.layer.add(positionAnimation, forKey: "asjdf")
+        
         
     }
 }

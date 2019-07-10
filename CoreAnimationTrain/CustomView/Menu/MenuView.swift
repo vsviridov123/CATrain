@@ -28,9 +28,11 @@ class MenuView: UIView {
             case .rolled:
                 self.tableView.isHidden = true
                 self.contentView.layer.cornerRadius = self.frame.width / 2
+                self.tableView.reloadData()
             case .normal:
                 self.contentView.layer.cornerRadius = 15
                 self.tableView.isHidden = false
+                self.tableView.reloadData()
             }
         }
     }
