@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class Icon: UIView,IconAnimation {
-    
     var duration: Double = 0.75
     var timeOffset: Double = 0.0
     var iconColor: UIColor = .white

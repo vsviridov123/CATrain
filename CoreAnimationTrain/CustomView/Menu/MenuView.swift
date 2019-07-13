@@ -18,6 +18,7 @@ class MenuView: UIView {
     @IBOutlet weak var tableView: UITableView!
     
     public var stateValue: [MenuViewState:CGRect] = [:]
+    public var duration: Double = 0.5
     public enum MenuViewState {
         case rolled
         case normal
@@ -30,8 +31,8 @@ class MenuView: UIView {
                 self.contentView.layer.cornerRadius = self.frame.width / 2
                 self.tableView.reloadData()
             case .normal:
-                self.contentView.layer.cornerRadius = 15
                 self.tableView.isHidden = false
+                self.contentView.layer.cornerRadius = 15
                 self.tableView.reloadData()
             }
         }
@@ -103,7 +104,7 @@ extension MenuView: UITableViewDelegate {
         guard let menuCell = cell as? MenuViewCell else { return }
         menuCell.configure(cellObject: self.cellObject[indexPath.row])
         if withStartAnimation {
-            menuCell.startCellAnimation(0.1 * Double(indexPath.row))
+            menuCell.startCellAnimation(0.1 * Double(indexPath.row) + self.duration * 0.8)
         }
     }
     

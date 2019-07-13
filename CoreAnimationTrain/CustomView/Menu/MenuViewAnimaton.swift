@@ -12,58 +12,36 @@ import UIKit
 extension MenuView {
     
     private enum AnimationConstants {
-        static let cornerAnimationName = "corner_frame_animation"
+        static let boundsAnimation = "bounds_animation"
+        static let positionAnimationName = "position_animation"
     }
     
     public func animationRolledFromCurrentState() {
         switch self.state {
         case .rolled:
-            self.state = .normal
             self.popupAnimation(to: .normal, newFrame: self.stateValue[.normal] ?? .zero)
         case .normal:
-            self.state = .rolled
             self.popupAnimation(to: .rolled, newFrame: self.stateValue[.rolled] ?? .zero)
         }
     }
     
-    public func popupAnimation(to state: MenuViewState, newFrame: CGRect, duration: Double = 0.5) {
+    public func popupAnimation(to state: MenuViewState, newFrame: CGRect) {
         
-        self.state = state
-        
-        var newRadius: CGFloat = 0.0
-        
-        switch state {
-        case .rolled:
-            newRadius = self.frame.width / 2
-        case .normal:
-            newRadius = 15.0
-        }
-        
-        let cornerAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.cornerRadius))
-        cornerAnimation.duration = duration
-        cornerAnimation.fromValue = self.layer.cornerRadius
-        cornerAnimation.toValue = newRadius
-        
-        let scaleAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
-        scaleAnimation.fromValue = self.contentView.layer.transform
-        scaleAnimation.toValue = CATransform3DMakeScale(newFrame.width / self.frame.width,newFrame.height / self.frame.height, 1)
-        scaleAnimation.duration = duration
+        let boundsAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.bounds))
+        boundsAnimation.duration = self.duration
+        boundsAnimation.fromValue = self.contentView.bounds
+        boundsAnimation.toValue = CGRect(origin: .zero, size: newFrame.size)
         
         let positionAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.position))
-        positionAnimation.duration = duration
+        positionAnimation.duration = self.duration
         positionAnimation.fromValue = self.layer.position
         positionAnimation.toValue = newFrame.origin.offset(x: newFrame.width / 2, y: newFrame.height / 2)
-
-        let groupAnimaiton = CAAnimationGroup()
-        groupAnimaiton.duration = duration
-        groupAnimaiton.animations = [cornerAnimation, scaleAnimation]
         
-        self.contentView.layer.cornerRadius = newRadius
-        self.contentView.layer.transform = CATransform3DMakeScale(newFrame.width / self.frame.width,newFrame.height / self.frame.height, 1)
-        self.contentView.layer.add(groupAnimaiton, forKey: AnimationConstants.cornerAnimationName)
+        self.state = state
+        self.contentView.bounds = CGRect(origin: .zero, size: newFrame.size)
+        self.contentView.layer.add(boundsAnimation, forKey: AnimationConstants.boundsAnimation)
         self.layer.position = newFrame.origin.offset(x: newFrame.width / 2, y: newFrame.height / 2)
-        self.layer.add(positionAnimation, forKey: "asjdf")
-        
+        self.layer.add(positionAnimation, forKey: AnimationConstants.positionAnimationName)
         
     }
 }

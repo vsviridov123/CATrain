@@ -13,25 +13,37 @@ protocol IconAnimation: class {
     var iconLayers: [CAShapeLayer] { get set }
     var duration: Double { get set }
     var timeOffset: Double { get set }
-    func startAnimation()
+    func startAnimationFromCurrentState()
+    func startAnimation(fromValue: CGFloat, toValue: CGFloat)
 }
 
 extension IconAnimation {
-    func startAnimation() {
+    
+    func startAnimationFromCurrentState() {
         for index in 0..<self.iconLayers.count {
-            self.strokeAnimation(layer: &self.iconLayers[index])
+            self.strokeEndAnimationFromCurrentState(layer: &self.iconLayers[index])
         }
     }
-     
-    private func strokeAnimation(layer: inout CAShapeLayer) {
-        let strokeAnim = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.strokeEnd))
-        strokeAnim.duration = self.duration
-        strokeAnim.beginTime = self.timeOffset + layer.convertTime(CACurrentMediaTime(), from: nil)
-        strokeAnim.fromValue = layer.strokeEnd
-        strokeAnim.toValue = 1 - layer.strokeEnd
-        strokeAnim.fillMode = .backwards
-        layer.strokeEnd = (1 - layer.strokeEnd)
+    
+    func startAnimation(fromValue: CGFloat, toValue: CGFloat) {
+        for index in 0..<self.iconLayers.count {
+            self.strokeEndAnimation(layer: &self.iconLayers[index], fromValue: fromValue, toValue: toValue)
+        }
+    }
+    
+    private func strokeEndAnimation(layer: inout CAShapeLayer, fromValue: CGFloat, toValue: CGFloat)  {
+        let strokeAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.strokeEnd))
+        strokeAnimation.duration = self.duration
+        strokeAnimation.beginTime = self.timeOffset + layer.convertTime(CACurrentMediaTime(), from: nil)
+        strokeAnimation.fromValue = fromValue
+        strokeAnimation.toValue = toValue
+        strokeAnimation.fillMode = .backwards
+        layer.strokeEnd = toValue
         layer.removeAllAnimations()
-        layer.add(strokeAnim, forKey: "one")
+        layer.add(strokeAnimation, forKey: "strokeEnd_animation")
+    }
+     
+    private func strokeEndAnimationFromCurrentState(layer: inout CAShapeLayer) {
+        self.strokeEndAnimation(layer: &layer, fromValue: layer.strokeEnd, toValue: 1 - layer.strokeEnd)
     }
 }

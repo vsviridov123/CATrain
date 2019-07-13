@@ -39,7 +39,7 @@ class MenuViewCell: UITableViewCell {
     
     public func startCellAnimation(_ offset: Double) {
         cellObject.icon.timeOffset = offset
-        cellObject.icon.startAnimation()
+        cellObject.icon.startAnimation(fromValue: 0, toValue: 1)
         UIView.animate(withDuration: cellObject.icon.duration * 0.25,
                        delay: offset + cellObject.icon.duration * 0.75,
                        options: .curveEaseOut,
